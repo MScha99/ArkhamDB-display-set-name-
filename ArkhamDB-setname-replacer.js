@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Replace ArkhamDB Pager Item
+// @name         Replace ArkhamDB scenario pack with set name
 // @namespace    http://tampermonkey.net/
 // @version      04.05.2025
-// @description  Replace second item in ArkhamDB pager with custom text
+// @description  Script that replaces scenario pack names with corresponding set names, for those that bought them in the new formula/in one go. Works on card-detail page ex: /card/06279
 // @author       mscha99
 // @match        https://arkhamdb.com/*
 // @grant        none
