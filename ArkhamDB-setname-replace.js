@@ -6,6 +6,7 @@
 // @author       mscha99
 // @match        https://arkhamdb.com/*
 // @grant        none
+// @run-at       document-idle
 // ==/UserScript==
 
 (function() {
@@ -116,26 +117,32 @@ const subsetToSet = {
     "Aura of Faith": "Parallel",
 };
 
+    function waitForElement(selector, callback, timeout = 10000) {
+        const start = Date.now();
+        const interval = setInterval(() => {
+            const el = document.querySelector(selector);
+            if (el) {
+                clearInterval(interval);
+                callback(el);
+            } else if (Date.now() - start > timeout) {
+                clearInterval(interval);
+                console.warn("Timeout: Element not found:", selector);
+            }
+        }, 200);
+    }
 
-    window.addEventListener('load', function() {
-        const pager = document.querySelector('ul.pager');
-        if (!pager) return;
-
-        const items = pager.querySelectorAll('li');
+    waitForElement("ul.pager", (pager) => {
+        const items = pager.querySelectorAll("li");
         if (items.length >= 2) {
-            const anchor = items[1].querySelector('a');
-            if (!anchor) return;
-
-            const subsetName = anchor.innerText.trim();
+            const anchor = items[1].querySelector("a");
+            const subsetName = anchor?.textContent?.trim();
             const setName = subsetToSet[subsetName];
-
             if (setName) {
-                // Replace the inner HTML with the set name
                 items[1].innerHTML = `<span style="font-weight: bold; color: purple;">${setName}</span>`;
             } else {
-                // Optional: indicate no match was found
-                console.warn(`No set mapping found for subset: "${subsetName}"`);
+                console.warn("No mapping found for:", subsetName);
             }
         }
     });
+
 })();
