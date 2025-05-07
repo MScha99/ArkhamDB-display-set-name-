@@ -4,7 +4,7 @@
 # ![script](https://github.com/user-attachments/assets/2edd88cf-f5e2-45c6-8c0f-7fce557ef22c)
 
 
-## installation
+## Installation
 **prerequisite: install tampermonkey browser addon**  
 - chrome: https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo
 - firefox: https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/
@@ -14,11 +14,8 @@
 - click "install"
 
 ### Manually:
-- click on the addon icon in your browser
-- click "add new script"
-- paste the code from this repo's .js file
-- click save
-
-
-
-
+- download ArkhamDB-setname-replace.js and manifest.json into local folder on your computer
+- go to addons in your browser
+- make sure Developer Mode is enebled
+- click "Load unpacked" and select local folder
+- enjoy you addon :)
